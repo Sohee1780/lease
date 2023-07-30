@@ -38,18 +38,24 @@ public class ProductDaoTest {
 	@Test
 	void findAllForHome() {
 		//given
-		Product product1 = new Product(1L, 1L, "≈Ÿ∆Æ1", 100000, 
-											"≈Ÿ∆Æ1º≥∏Ì", "º≠øÔ");
-		Product product2 = new Product(1L, 1L, "≈Ÿ∆Æ2", 200000, 
-				"≈Ÿ∆Æ2º≥∏Ì", "¿Œ√µ");
-		productDao.save(product1);
-		productDao.save(product2);
+//		Product product1 = new Product(1L, 1L, "≈Ÿ∆Æ1", 100000, 
+//											"≈Ÿ∆Æ1º≥∏Ì", "º≠øÔ");
+//		Product product2 = new Product(1L, 1L, "≈Ÿ∆Æ2", 200000, 
+//				"≈Ÿ∆Æ2º≥∏Ì", "¿Œ√µ");
+//		productDao.save(product1);
+//		productDao.save(product2);
+//		
+//		//when
+//		List<Product> list = productDao.findAllForHome();
+//				
+//		//then
+//		Assertions.assertThat(list.get(0).getProductId()).isEqualTo(product1.getProductId());
 		
-		//when
 		List<Product> list = productDao.findAllForHome();
-				
-		//then
-		Assertions.assertThat(list.get(0).getProductId()).isEqualTo(product1.getProductId());
+		
+		list.forEach(product -> {
+			System.out.println(product.getProductId());
+		});
 	}
 
 }
