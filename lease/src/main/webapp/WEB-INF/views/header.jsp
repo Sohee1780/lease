@@ -10,7 +10,6 @@
 <body>
 헤더 연결 테스트<br>
 model에 저장한 message : ${msg} <br>
-??????
 
 <c:forEach items="${list }" var="cate">
 	cateName : ${cate.categoryName }
