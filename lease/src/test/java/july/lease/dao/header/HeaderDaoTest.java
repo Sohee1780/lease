@@ -23,6 +23,8 @@ public class HeaderDaoTest {
 		
 		List<Category> list = headerDao.getCategory();
 		list.forEach(cate -> {
+			log.info("cateId={}",cate.getCategoryId());
+			log.info("cateParent={}",cate.getCategoryId2());
 			log.info("cateName={}",cate.getCategoryName());
 		});
 	}

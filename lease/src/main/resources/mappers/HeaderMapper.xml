@@ -4,6 +4,6 @@
 <mapper namespace="july.lease.dao.header.HeaderMapper">
 
 	<select id="getCategory" resultType="Category">
-		select * from category
+		select * from category order by category_id
 	</select>
 </mapper>
