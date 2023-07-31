@@ -1,10 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	// AJAX사용해서 일단 카테고리 뿌리기 **
+	window.addEventListener('load', function() {
+		// 카테고리 
+		// fetch then 사용해서 JSON데이터 받아와서 카테고리 처리
+		
+		// url요청 결과를 받아옴
+		// fetch()메서드는 Promise를 반환
+		// fetch()메서드 뒤에 Promise 메서드를 포함 시킴(.then())
+		// 반환된 Promise가 resolve라면 .then()메서드 안쪽에 있는 function이 실행됨
+		fetch('/category')
+		// 요청결과를 js object형식으로 반환
+		.then(response => response.json())
+		// 콜백함수 익명함수로 쓰려면 이렇게 써야함!
+		.then(function(map){
+			let list = map.list;
+			list.forEach(cate=> {
+				console.log(cate.categoryName);
+			})
+		});	
+		/*
+			.catch(function() {
+	    	// handle the error
+	  		});
+		
+			catch메서드는 거부된 promise를 처리하는데 쓰임
+			에러가 발생했을 경우 catch()안의 코드가 실행됨
+		*/
+	})
+	
+</script>
 </head>
 <body>
     <header>
@@ -24,8 +56,8 @@
 	            <div class='search'>
 	                <input type="text" name="startDate" id="startDate" class='/hidden'>
 	                <input type="text" name="endDate" id="endDate" class='/hidden'>
-	                <input type="text" name="startDateIndex" id="startDateIndex" class='/hidden'>
-	                <input type="text" name="endDateIndex" id="endDateIndex" class='/hidden'>
+	                <input type="text" name="startDateIndex" id="startDateIndex" class='/hidden' value='0'>
+	                <input type="text" name="endDateIndex" id="endDateIndex" class='/hidden' value='0'>
 	                
 	                <input type="search" name="search" id="search" placeholder='검색어' autocomplete='off'>
 	                <svg width='1.2rem' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

@@ -1,39 +1,37 @@
 package july.lease.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import july.lease.service.HeaderService;
 import lombok.extern.slf4j.Slf4j;
 
-@Controller
+@RestController
 @Slf4j
 public class HeaderController {
 
 	@Autowired
 	private HeaderService headerService;
 	
-	@GetMapping("/home")
-	public String home(Model model, String startDate, String endDate) {
+	
+	@GetMapping("/category")
+	public Map<String, Object> getCategory() {
+
+		log.info("category호출");
 		
-		//headerService.getCategory(model);
+		Map<String, Object> map = new HashMap();
 		
-		log.info("home");
 		
-		log.info("startDate={}",startDate);
-		log.info("endDate={}",endDate);
+		// 카테고리 리스트 맵에 put
+		map.put("list", headerService.getCategory());
+		// 헤더에 쪽지부분 map 저장해서 같이 보내기
 		
-		return "Project_home";
+		// 맵 반환
+		return map;
 	}
 	
-//	@GetMapping("/home")
-//	public String getCategory(Model model) {
-//		
-//		// 헤더 필요한곳에서 호출
-//		// headerService.getCategory(model);
-//		
-//		return "/Project_home";
-//	}
 }
